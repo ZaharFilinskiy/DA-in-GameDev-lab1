@@ -42,9 +42,13 @@
 Ход работы:
 - Для работы на Python я выбрал компьютерную версию-Anacondaz. Установаил, разобрался и написал первую программу вывода сообщения Hello World. С Unity всё оказалось сложнее. Проделав все необходимые шаги для установки программы, я написал вывод сообщения на Vs code, связал его с main camera в unity и в итоге достиг своей цели.
 
+- 1)Ссылка на скриншоты Python: Выполнение программы - https://github.com/ZaharFilinskiy/DA-in-GameDev-lab1/blob/15f1f56a2042f20330b8e64a7afbfa94793ad7ec/2022-09-24_16-39-16.png , Сохранение программы https://github.com/ZaharFilinskiy/DA-in-GameDev-lab1/blob/15f1f56a2042f20330b8e64a7afbfa94793ad7ec/2%20%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B0.png
+- 2)Ссылки на скриншоты Unity : Выполнение программы в консоли - https://github.com/ZaharFilinskiy/DA-in-GameDev-lab1/blob/15f1f56a2042f20330b8e64a7afbfa94793ad7ec/unityy.png ; Текст на VS code - https://github.com/ZaharFilinskiy/DA-in-GameDev-lab1/blob/15f1f56a2042f20330b8e64a7afbfa94793ad7ec/%D1%82%D0%B5%D0%BA%D1%81%D1%82%20%D1%84%D0%B0%D0%B9%D0%BB%D0%B0.png
+
+Я не очень разобрался нужно ли прикладывать скрины только из репозитория своего, так-что продублировал со скринами с яндекс диска:
+
 - 1)Ссылка на скриншоты Python: Выполнение программы - https://disk.yandex.ru/i/kjYmbIqHo41waQ , Сохранение программы https://disk.yandex.ru/i/ezamsw0aUKc-pA
 - 2)Ссылки на скриншоты Unity : Выполнение программы в консоли - https://disk.yandex.ru/i/Sba-vdSdGxjV4w ; Текст на VS code - https://disk.yandex.ru/i/mMjhkEk7OpKsDQ
-
 
 ## Задание 2
 ### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
