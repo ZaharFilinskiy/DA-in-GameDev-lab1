@@ -121,30 +121,43 @@ plt. plot (x, prediction)
 ## Задание 3
 ### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
 
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
+-Опытным путём я установил что ведечина loss не должна стремиться к нулю при изменении исходных данных. Если loss будет стремиться к нулю то график будет паралельным оси x или же острым углом к этой же оси. 
 
 ```py
+a = np.random.rand (1)
+print(a)
+b = np.random.rand(1)
+print (b)
+Lr = 0.000001
 
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
+a,b = iterate(a,b,x,y,1)
+prediction=model (a, b, x)
+loss = 0
+print (a, b, loss)
+plt.scatter(x, y)
+plt.plot(x,prediction)
 
 ```
+Итог : https://github.com/ZaharFilinskiy/DA-in-GameDev-lab1/blob/ea2c933e63cf9cbc5a1718a1495bfee4f18708dc/2022-09-26_19-29-03.png
+
+-Параметр Lr помогает правильно выстравить кривую и соотвествущие ей оси x и y. Выступает в роли некого коэффициента, домножая на который система координат xy выстраивается в нужное положение.
+
+```py
+a = np.random.rand (1)
+print(a)
+b = np.random.rand(1)
+print (b)
+Lr = 0.01
+
+a,b = iterate(a,b,x,y,1)
+prediction=model (a, b, x)
+loss = loss_function(a, b, x, y)
+print (a, b, loss)
+plt.scatter(x, y)
+plt.plot(x,prediction)
+```
+
+-Пример что будет если изменить коэффициент: https://github.com/ZaharFilinskiy/DA-in-GameDev-lab1/blob/fabc8f2eba84418b48e07a94a3c5d635a6ba6724/2022-09-26_19-40-57.png
 
 ## Выводы
 
