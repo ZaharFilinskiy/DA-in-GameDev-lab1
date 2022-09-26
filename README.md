@@ -161,16 +161,7 @@ plt.plot(x,prediction)
 
 ## Выводы
 
-Абзац умных слов о том, что было сделано и что было узнано.
-
-| Plugin | README |
-| ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md][PlDb] |
-| GitHub | [plugins/github/README.md][PlGh] |
-| Google Drive | [plugins/googledrive/README.md][PlGd] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |
-| Medium | [plugins/medium/README.md][PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
+В ходе выполнения данной лабораторной работы я разобрался с установкой необходимого ПО и также смог настроить его. Написал свою первую программу на unity, anacondaz и поближе познакомился с интерфейсом и функционалом программ. Помимо этого, глубже изучил понятие линейной регрессии на языке python.
 
 ## Powered by
 
