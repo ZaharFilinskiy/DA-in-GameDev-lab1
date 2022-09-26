@@ -65,6 +65,7 @@ y=[2, 22, 24, 65, 79, 82, 55, 130, 150, 199]
 y=np.array(y)
 plt.scatter(x,y)
 ```
+- Выполнение программы: https://github.com/ZaharFilinskiy/DA-in-GameDev-lab1/blob/d9aacfc8ff07303e40f13ff4a308f9f30ed8d186/2022-09-26_18-41-47.png
 
 ```py
 def model (a, b, x):
@@ -90,6 +91,7 @@ def iterate(a, b, x, y, times) :
         a,b = optimize(a,b,x,y)
     return a, b
 ```
+
 ```py
 a = np.random.rand (1)
 print(a)
@@ -104,6 +106,7 @@ print (a, b, loss)
 plt.scatter(x, y)
 plt.plot(x,prediction)
 ```
+- Выполнение программы: https://github.com/ZaharFilinskiy/DA-in-GameDev-lab1/blob/d9aacfc8ff07303e40f13ff4a308f9f30ed8d186/2022-09-26_18-48-06.png
 
 ```py
 a,b = iterate(a,b,x,y,1000)
@@ -113,6 +116,8 @@ print (a, b, loss)
 plt.scatter(x,y)
 plt. plot (x, prediction)
 ```
+- Выполнение программы: https://github.com/ZaharFilinskiy/DA-in-GameDev-lab1/blob/d9aacfc8ff07303e40f13ff4a308f9f30ed8d186/2022-09-26_18-49-14.png
+
 ## Задание 3
 ### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
 
