@@ -45,41 +45,76 @@
 - 1)Ссылка на скриншоты Python: Выполнение программы - https://github.com/ZaharFilinskiy/DA-in-GameDev-lab1/blob/15f1f56a2042f20330b8e64a7afbfa94793ad7ec/2022-09-24_16-39-16.png , Сохранение программы https://github.com/ZaharFilinskiy/DA-in-GameDev-lab1/blob/15f1f56a2042f20330b8e64a7afbfa94793ad7ec/2%20%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B0.png
 - 2)Ссылки на скриншоты Unity : Выполнение программы в консоли - https://github.com/ZaharFilinskiy/DA-in-GameDev-lab1/blob/15f1f56a2042f20330b8e64a7afbfa94793ad7ec/unityy.png ; Текст на VS code - https://github.com/ZaharFilinskiy/DA-in-GameDev-lab1/blob/15f1f56a2042f20330b8e64a7afbfa94793ad7ec/%D1%82%D0%B5%D0%BA%D1%81%D1%82%20%D1%84%D0%B0%D0%B9%D0%BB%D0%B0.png
 
-Я не очень разобрался нужно ли прикладывать скрины только из репозитория своего, так-что продублировал со скринами с яндекс диска:
+- Я не очень разобрался нужно ли прикладывать скрины только из репозитория своего, так-что продублировал со скринами с яндекс диска:
 
 - 1)Ссылка на скриншоты Python: Выполнение программы - https://disk.yandex.ru/i/kjYmbIqHo41waQ , Сохранение программы https://disk.yandex.ru/i/ezamsw0aUKc-pA
 - 2)Ссылки на скриншоты Unity : Выполнение программы в консоли - https://disk.yandex.ru/i/Sba-vdSdGxjV4w ; Текст на VS code - https://disk.yandex.ru/i/mMjhkEk7OpKsDQ
 
 ## Задание 2
-### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
+### В разделе "ход работы" пошагово выполнить каждый пункт с описанием и примером реализации задачи по теме лабораторной работы.
 
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
+- Выполнив каждый пункт второго задания лабораторной работы я увидел примеры линейной регресси, изучил новые функции и их применение в языке Python.
 
 ```py
-
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
-
+import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
+x=[3, 21, 22, 34, 54, 34, 55, 67, 88, 99]
+x=np.array(x)
+y=[2, 22, 24, 65, 79, 82, 55, 130, 150, 199]
+y=np.array(y)
+plt.scatter(x,y)
 ```
 
+```py
+def model (a, b, x):
+    return a*x + b
+
+
+def loss_function(a, b, x, y):
+    num = len(x)
+    prediction = model (a,b,x)
+    return (0.5/num) * (np.square(prediction-y)).sum()
+
+def optimize(a,b,x,y):
+    num=len(x)
+    prediction = model(a,b,x)
+    da = (1.0/num) * ( (prediction -y)*x).sum()
+    db = (1.0/num) * ((prediction -y).sum())
+    a = a - Lr*da
+    b = b = Lr*db
+    return a, b
+
+def iterate(a, b, x, y, times) :
+    for i in range(times):
+        a,b = optimize(a,b,x,y)
+    return a, b
+```
+```py
+a = np.random.rand (1)
+print(a)
+b = np.random.rand(1)
+print (b)
+Lr = 0.000001
+
+a,b = iterate(a,b,x,y,1)
+prediction=model (a, b, x)
+loss = loss_function(a, b, x, y)
+print (a, b, loss)
+plt.scatter(x, y)
+plt.plot(x,prediction)
+```
+
+```py
+a,b = iterate(a,b,x,y,1000)
+prediction=model (a,b,x)
+loss = loss_function(a, b, x, y)
+print (a, b, loss)
+plt.scatter(x,y)
+plt. plot (x, prediction)
+```
 ## Задание 3
-### Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
+### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
 
 - Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
 - Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
